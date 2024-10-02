@@ -1,8 +1,13 @@
-use std::f64::consts;
 fn main() {
-    let x = 2.0 * consts::PI;
+    let mut v = Vec::new();
+    v.push(10);
+    v.push(20);
+    v.push(30);
 
-    let abs_difference = (x.cos() - 1.0).abs();
+    let first = v[0];
+    let maybe_first = v.get(0);
 
-    assert!(abs_difference < 1e-10);
+    println!("v is {:?}", v);
+    println!("first is {}", first);
+    println!("maybe_first is {:?}", maybe_first);
 }
