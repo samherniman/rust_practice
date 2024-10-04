@@ -1,17 +1,43 @@
-fn add_mul(x: f64, y: f64) -> (f64,f64) {
-    (x + y, x * y)
+//use std::fmt;
+
+#[derive(Debug)]
+struct Person {
+    first_name: String,
+    last_name: String
+}
+
+impl Person {
+
+    fn new(first: &str, name: &str) -> Person {
+        Person {
+            first_name: first.to_string(), 
+            last_name: name.to_string()
+        }
+    }
+
+    fn full_name(&self) -> String {
+        format!("{} {}",self.first_name, self.last_name)
+    }
+
+    fn set_first_name(&mut self, name: &str) {
+        self.first_name = name.to_string();
+    }
+
+    fn to_tuple(self) -> (String,String) {
+        (self.first_name, self.last_name)
+    }
 }
 
 fn main() {
-    let t = add_mul(2.0,10.0);
+    let mut p = Person::new("John","Smith");
 
-    // can debug print
-    println!("t {:?}", t);
+    println!("{:?}", p);
 
-    // can 'index' the values
-    println!("add {} mul {}", t.0,t.1);
+    p.set_first_name("Jane");
 
-    // can _extract_ values
-    let (add,mul) = t;
-    println!("add {} mul {}", add,mul);
+    println!("{:?}", p);
+
+    println!("{:?}", p.to_tuple());
+    // p has now moved.
+
 }
